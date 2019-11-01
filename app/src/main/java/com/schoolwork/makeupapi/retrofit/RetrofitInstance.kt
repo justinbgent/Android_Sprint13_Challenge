@@ -10,8 +10,8 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Inject
 
+//Model
 data class MakeupProduct(val name: String, val price: String, val image_link: String, val rating: String?)
-
 
 interface MakeupApi{
     @GET("products.json")
@@ -31,6 +31,4 @@ class RetrofitInstance @Inject constructor() {
 
         return builder.getProductList(brand)
     }
-
-
 }

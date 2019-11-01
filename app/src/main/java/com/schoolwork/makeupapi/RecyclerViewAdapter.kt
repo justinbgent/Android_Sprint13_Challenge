@@ -32,7 +32,8 @@ class RecyclerViewAdapter(val productList: Array<MakeupProduct>): RecyclerView.A
 
         Picasso.get().load(product.image_link).into(holder.productImage)
 
-        holder.productPrice.text = product.price
+        val priceString = "$${product.price}0"
+        holder.productPrice.text = priceString
 
         holder.productRating.text = product.rating ?: "NoRating"
 
