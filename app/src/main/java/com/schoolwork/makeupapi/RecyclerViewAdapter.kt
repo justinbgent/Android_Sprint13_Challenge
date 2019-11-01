@@ -3,14 +3,19 @@ package com.schoolwork.makeupapi
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.schoolwork.makeupapi.retrofit.MakeupProduct
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_item.view.*
 
 class RecyclerViewAdapter(val productList: Array<MakeupProduct>): RecyclerView.Adapter<RecyclerViewAdapter.MakeupViewHolder>() {
     class MakeupViewHolder(view: View) : RecyclerView.ViewHolder(view){
         val productName: TextView = view.txt_name
+        val productPrice: TextView = view.txt_price
+        val productRating: TextView = view.txt_rating
+        val productImage: ImageView = view.image_view
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MakeupViewHolder {
@@ -22,6 +27,14 @@ class RecyclerViewAdapter(val productList: Array<MakeupProduct>): RecyclerView.A
 
     override fun onBindViewHolder(holder: MakeupViewHolder, position: Int) {
         val product = productList[position]
+
         holder.productName.text = product.name
+
+        Picasso.get().load(product.image_link).into(holder.productImage)
+
+        holder.productPrice.text = product.price
+
+        holder.productRating.text = product.rating ?: "NoRating"
+
     }
 }

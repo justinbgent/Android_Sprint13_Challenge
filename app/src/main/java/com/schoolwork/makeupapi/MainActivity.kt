@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.getProducts(edit_txt.text.toString())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .onErrorReturn { arrayOf(MakeupProduct("null", "null", "", "null")) }
+                .onErrorReturn { arrayOf(MakeupProduct("InvalidBrand", "InvalidBrand", "", "InvalidBrand")) }
                 .subscribe{ products -> setupRecyclerView(products)}
         }
     }
