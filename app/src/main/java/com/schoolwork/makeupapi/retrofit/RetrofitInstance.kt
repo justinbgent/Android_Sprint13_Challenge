@@ -16,7 +16,7 @@ interface MakeupApi{
     fun getProductList(@Query("brand")brand: String): Single<Array<MakeupProduct>>
 }
 
-object Retrofit {
+object RetrofitInstance {
     const val BASE_URL = "https://makeup-api.herokuapp.com/api/v1/"
 
     fun getProducts(brand: String): Single<Array<MakeupProduct>>{

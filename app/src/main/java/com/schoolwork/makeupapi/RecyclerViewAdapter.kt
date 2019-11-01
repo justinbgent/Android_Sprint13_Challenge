@@ -3,11 +3,14 @@ package com.schoolwork.makeupapi
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.schoolwork.makeupapi.retrofit.MakeupProduct
+import kotlinx.android.synthetic.main.recycler_item.view.*
 
-class RecyclerViewAdapter(val mutableList: MutableList<Int>): RecyclerView.Adapter<RecyclerViewAdapter.MakeupViewHolder>() {
+class RecyclerViewAdapter(val productList: Array<MakeupProduct>): RecyclerView.Adapter<RecyclerViewAdapter.MakeupViewHolder>() {
     class MakeupViewHolder(view: View) : RecyclerView.ViewHolder(view){
-
+        val productName: TextView = view.txt_name
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MakeupViewHolder {
@@ -15,11 +18,10 @@ class RecyclerViewAdapter(val mutableList: MutableList<Int>): RecyclerView.Adapt
         return MakeupViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getItemCount() = productList.size
 
     override fun onBindViewHolder(holder: MakeupViewHolder, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val product = productList[position]
+        holder.productName.text = product.name
     }
 }
